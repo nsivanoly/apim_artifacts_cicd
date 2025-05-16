@@ -1,0 +1,353 @@
+swagger: "2.0"
+info:
+  description: Api Documentation
+  version: v1
+  title: UserAPI
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+host: localhost:8595
+basePath: /
+tags:
+ -
+  name: user-controller
+  description: User Controller
+security:
+ -
+  default: []
+paths:
+  /api/users:
+    get:
+      tags:
+       - user-controller
+      summary: getAllUserrs
+      operationId: getAllUserrsUsingGET
+      produces:
+       - '*/*'
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/User"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    post:
+      tags:
+       - user-controller
+      summary: createUser
+      operationId: createUserUsingPOST
+      consumes:
+       - application/json
+      produces:
+       - '*/*'
+      parameters:
+       -
+        in: body
+        name: user
+        description: user
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /api/users/ssn/{ssn}:
+    get:
+      tags:
+       - user-controller
+      summary: getUserBySSN
+      operationId: getUserBySSNUsingGET
+      produces:
+       - '*/*'
+      parameters:
+       -
+        name: ssn
+        in: path
+        description: ssn
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /api/users/verify/{userID}:
+    post:
+      tags:
+       - user-controller
+      summary: verifyUser
+      operationId: verifyUserUsingPOST
+      consumes:
+       - application/json
+      produces:
+       - '*/*'
+      parameters:
+       -
+        name: userID
+        in: path
+        description: userID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /api/users/{userID}:
+    get:
+      tags:
+       - user-controller
+      summary: getUserByID
+      operationId: getUserByIDUsingGET
+      produces:
+       - '*/*'
+      parameters:
+       -
+        name: userID
+        in: path
+        description: userID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    put:
+      tags:
+       - user-controller
+      summary: updateUser
+      operationId: updateUserUsingPUT
+      consumes:
+       - application/json
+      produces:
+       - '*/*'
+      parameters:
+       -
+        in: body
+        name: userDetails
+        description: userDetails
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+       -
+        name: userID
+        in: path
+        description: userID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    delete:
+      tags:
+       - user-controller
+      summary: deleteUser
+      operationId: deleteUserUsingDELETE
+      produces:
+       - '*/*'
+      parameters:
+       -
+        name: userID
+        in: path
+        description: userID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+        "204":
+          description: No Content
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+       -
+        default: []
+      deprecated: false
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+securityDefinitions:
+  default:
+    type: oauth2
+    authorizationUrl: https://test.com
+    flow: implicit
+    scopes: {}
+definitions:
+  User:
+    type: object
+    properties:
+      city:
+        type: string
+      dob:
+        type: string
+      fullName:
+        type: string
+      isVerified:
+        type: boolean
+      ssn:
+        type: string
+      userID:
+        type: integer
+        format: int64
+    title: User
+x-wso2-auth-header: Authorization
+x-wso2-api-key-header: ApiKey
+x-wso2-cors:
+  corsConfigurationEnabled: false
+  accessControlAllowOrigins:
+   - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+   - authorization
+   - Access-Control-Allow-Origin
+   - Content-Type
+   - SOAPAction
+   - apikey
+   - Internal-Key
+  accessControlAllowMethods:
+   - GET
+   - PUT
+   - POST
+   - DELETE
+   - PATCH
+   - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+   - http://localhost:8595
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+   - http://localhost:8595
+  type: http
+x-wso2-basePath: /users/v1
+x-wso2-transports:
+ - http
+ - https
+x-wso2-application-security:
+  security-types:
+   - oauth2
+  optional: false
+x-wso2-response-cache:
+  enabled: false
+  cacheTimeoutInSeconds: 300
