@@ -2,7 +2,7 @@ type: api
 version: v4.5.0
 data:
   id: c9678498-f232-4d37-b2b7-a3f0e24c074c
-  name: UserAPI
+  name: UserAPIz
   description: Api Documentation
   context: /users
   version: v1
