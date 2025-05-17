@@ -4,7 +4,7 @@ pipeline {
     environment {
         ENV_NAME = "wso2-local"
         API_PROJECT_PATH = "${env.WORKSPACE}"
-        APIM_HOST = "https://192.168.8.100:9446"
+        APIM_HOST = "https://192.168.8.101:9443"
         HOME = "${env.WORKSPACE}"
         CONFIG_FILE = "${env.WORKSPACE}/.wso2apictl/main_config.yaml"
     }
