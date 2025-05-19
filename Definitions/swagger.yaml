@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: Api Documentations
+  description: Api Documentations IB
   version: v1
   title: UserAPI
   termsOfService: urn:tos
