@@ -22,7 +22,7 @@ paths:
     get:
       tags:
        - user-controller
-      summary: getAllUsersInOne Request
+      summary: getAllUsersInOne Request FOr IB
       operationId: getAllUserrsUsingGET
       produces:
        - '*/*'
