@@ -13,7 +13,7 @@ basePath: /
 tags:
  -
   name: user-controller
-  description: User Controller
+  description: User Controller IB
 security:
  -
   default: []
